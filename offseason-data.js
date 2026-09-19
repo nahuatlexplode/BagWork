@@ -285,6 +285,10 @@ if (transactionList) {
     .sort((a, b) => a[1].localeCompare(b[1]))
     .forEach(([abbr, team]) => teamSelect.add(new Option(`${team} · ${abbr.toUpperCase()}`, abbr)));
 
+  const requestedTeam = new URLSearchParams(location.search).get('team');
+  const requestedMove = offseasonMoves.find(move => move[0] === requestedTeam);
+  if (requestedMove) teamSelect.value = requestedMove[1];
+
   const moveCounts = type => offseasonMoves.filter(move => move[3] === type).length;
   document.getElementById('transactionSummary').innerHTML = `
     <div><b>${offseasonMoves.length}</b><span>official team entries</span></div>
