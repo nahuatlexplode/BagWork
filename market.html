@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>BagWork — Market Moves</title>
+  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="market.css?v=4">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="index.html"><span class="brand-mark">B</span><span>BAG<br><b>WORK</b></span></a>
+      <nav>
+        <p class="nav-label">INTELLIGENCE</p>
+        <a class="nav-link" href="index.html"><span>◈</span>Overview</a>
+        <a class="nav-link" href="players.html"><span>⌁</span>Player Index</a>
+        <a class="nav-link" href="teams.html"><span>◒</span>Team Outlook</a>
+        <a class="nav-link active" href="market.html"><span>↗</span>Market Moves</a>
+        <a class="nav-link" href="matches.html"><span>▣</span>Matches</a>
+        <a class="nav-link" href="calendar.html"><span>◫</span>Calendar</a>
+        <a class="nav-link" href="media.html"><span>◉</span>Media</a>
+      </nav>
+      <div class="sidebar-bottom"><span class="live-dot"></span>LIVE DATA<br><small data-live-status>Connecting to league feed…</small></div>
+    </aside>
+    <main>
+      <header>
+        <div><p class="eyebrow">MARKET MOVES</p><h1>Roster value,<br><em>in motion.</em></h1></div>
+        <div class="header-actions"><button class="icon-btn js-refresh" title="Refresh data">↻</button><a class="outline-btn" href="index.html">⌂ HOME</a></div>
+      </header>
+      <section class="trade-workspace" aria-labelledby="tradeBoardTitle">
+        <div class="trade-workspace-head">
+          <div><p class="eyebrow">COMPLETED TRANSACTIONS</p><h2 id="tradeBoardTitle">Major official moves, fully explained.</h2></div>
+          <div class="scenario-disclaimer official-only"><span></span> Completed moves only · verified Sep 18, 2026</div>
+        </div>
+        <div class="trade-workspace-grid">
+          <div class="trade-scenario-list" id="tradeScenarioList" aria-label="Completed transactions"></div>
+          <article class="trade-detail" id="tradeDetail" aria-live="polite"></article>
+        </div>
+      </section>
+      <section class="offseason-tracker" aria-labelledby="offseasonTrackerTitle">
+        <div class="offseason-tracker-head">
+          <div><p class="eyebrow">ALL 30 TEAMS · OFFICIAL MOVES</p><h2 id="offseasonTrackerTitle">2026 offseason transaction tracker.</h2><p>Arrivals, re-signings, extensions and every tracked departure—not a six-player shortlist.</p></div>
+          <div class="tracker-source"><span class="live-dot"></span><b>VERIFIED LEAGUE LEDGER</b><small>NBA.com · updated Sep 16, 2026</small><a href="https://www.nba.com/news/nba-offseason-deals-2026" target="_blank" rel="noreferrer">OPEN OFFICIAL TRACKER ↗</a></div>
+        </div>
+        <div class="transaction-summary" id="transactionSummary" aria-live="polite"></div>
+        <div class="transaction-controls">
+          <label class="transaction-search"><span>⌕</span><input id="transactionSearch" type="search" placeholder="Search player or team" autocomplete="off"></label>
+          <label>TEAM<select id="transactionTeam"><option value="all">All 30 teams</option></select></label>
+          <label>MOVE TYPE<select id="transactionType"><option value="all">All official moves</option><option value="Trade">Trade arrivals</option><option value="Signing">Free-agent signings</option><option value="Re-signing">Re-signings & extensions</option><option value="Departure">Players who left</option><option value="Other">Waivers & other</option></select></label>
+        </div>
+        <div class="transaction-list" id="transactionList"></div>
+        <div class="transaction-footer"><p id="transactionCount"></p><button class="outline-btn" id="transactionMore">SHOW ALL MOVES ↓</button></div>
+      </section>
+      <section class="potential-fits" id="potentialFits">
+        <div class="potential-fits-head"><div><p class="eyebrow">POTENTIAL TRADE FITS · NOT REPORTED</p><h2>Ideas live here—not in completed moves.</h2><p>Conceptual roster fits with realism, cost and risk clearly separated from official transactions.</p></div><span class="hypothetical-chip">HYPOTHETICALS ONLY</span></div>
+        <div class="potential-fit-grid" id="potentialFitGrid"></div>
+      </section>
+    </main>
+  </div>
+  <script src="app.js?v=7"></script>
+  <script src="market-trades.js?v=4"></script>
+  <script src="offseason-data.js?v=2"></script>
+</body>
+</html>

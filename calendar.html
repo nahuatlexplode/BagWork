@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>BagWork — NBA Calendar</title>
+  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="market.css?v=5">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="index.html"><span class="brand-mark">B</span><span>BAG<br><b>WORK</b></span></a>
+      <nav>
+        <p class="nav-label">INTELLIGENCE</p>
+        <a class="nav-link" href="index.html"><span>◈</span>Overview</a>
+        <a class="nav-link" href="players.html"><span>⌁</span>Player Index</a>
+        <a class="nav-link" href="teams.html"><span>◒</span>Team Outlook</a>
+        <a class="nav-link" href="market.html"><span>↗</span>Market Moves</a>
+        <a class="nav-link" href="matches.html"><span>▣</span>Matches</a>
+        <a class="nav-link active" href="calendar.html"><span>◫</span>Calendar</a>
+        <a class="nav-link" href="media.html"><span>◉</span>Media</a>
+      </nav>
+      <div class="sidebar-bottom"><span class="live-dot"></span>OFFICIAL DATES<br><small>NBA calendar checked Aug. 19, 2026</small></div>
+    </aside>
+    <main>
+      <header>
+        <div><p class="eyebrow">2026–27 NBA CALENDAR</p><h1>The season,<br><em>mapped out.</em></h1></div>
+        <div class="header-actions"><a class="outline-btn" href="index.html">⌂ HOME</a></div>
+      </header>
+      <section class="calendar-page-intro">
+        <div><p class="eyebrow">SEPTEMBER 2026 → JULY 2027</p><h2>From training camp through the post-Finals offseason.</h2><p>Confirmed dates appear directly on the calendar. Postseason, Draft and free-agency events without an announced date are marked <b>Dates pending</b> instead of being guessed.</p></div>
+        <div class="calendar-kpis"><span><b>11</b> MONTHS</span><span><b>40+</b> KEY EVENTS</span><span><b>NBA</b> OFFICIAL SOURCE</span></div>
+      </section>
+      <section class="calendar-section calendar-page">
+        <div class="section-heading calendar-heading"><div><p class="eyebrow">MONTHLY VIEW</p><h2>League dates and decision points.</h2></div><div class="calendar-nav"><button class="outline-btn" id="calendarPrev" aria-label="Previous month">←</button><select class="season-select" id="calendarMonth" aria-label="Calendar month"></select><button class="outline-btn" id="calendarNext" aria-label="Next month">→</button></div></div>
+        <div class="month-calendar" id="monthCalendar" aria-live="polite"></div>
+        <div class="calendar-legend"><span><i class="league"></i>League</span><span><i class="cup"></i>NBA Cup</span><span><i class="deadline"></i>Roster / deadline</span><span><i class="showcase"></i>Showcase</span></div>
+        <p class="calendar-source">Confirmed dates come from the <a href="https://www.nba.com/news/key-dates" target="_blank" rel="noreferrer">official NBA key-dates calendar</a>, <a href="https://www.nba.com/news/2026-27-nba-regular-season-schedule" target="_blank" rel="noreferrer">2026–27 schedule release</a> and <a href="https://gleague.nba.com/key-dates" target="_blank" rel="noreferrer">NBA G League calendar</a>. The page will need updating when the NBA announces the 2027 playoff, Finals, Draft and free-agency dates.</p>
+      </section>
+    </main>
+  </div>
+  <script src="season-calendar.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Courtside IQ — Player Index</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="index.html"><span class="brand-mark">C</span><span>COURTSIDE<br><b>IQ</b></span></a>
+      <nav>
+        <p class="nav-label">INTELLIGENCE</p>
+        <a class="nav-link" href="index.html"><span>◈</span>Overview</a>
+        <a class="nav-link active" href="players.html"><span>⌁</span>Player Index</a>
+        <a class="nav-link" href="teams.html"><span>◒</span>Team Outlook</a>
+        <a class="nav-link" href="market.html"><span>↗</span>Market Moves</a>
+      </nav>
+      <div class="sidebar-bottom"><span class="live-dot"></span>LIVE DATA<br><small data-live-status>Loading league roster…</small></div>
+    </aside>
+    <main>
+      <header>
+        <div><p class="eyebrow">PLAYER INDEX</p><h1>Every player,<br><em>in context.</em></h1></div>
+        <div class="header-actions"><button class="icon-btn js-refresh" aria-label="Refresh data">↻</button><button class="profile">AK <span>⌄</span></button></div>
+      </header>
+      <section class="player-tools glass-row">
+        <div class="search-field">⌕ <input id="playerSearch" placeholder="Search player or team"></div>
+        <label class="select-wrap">POSITION<select id="positionSelect"><option value="all">All positions</option><option value="G">Guards</option><option value="F">Forwards</option><option value="C">Centers</option></select></label>
+        <label class="select-wrap">SEASON / CAREER<select id="seasonSelect"><option>2026–27</option><option selected>2025–26</option><option>2024–25</option><option>2023–24</option><option>2022–23</option><option>2021–22</option><option value="Career">Career</option></select></label>
+      </section>
+      <section class="rankings-panel">
+        <div class="rank-toolbar"><div><p class="eyebrow">LEAGUE BOARD</p><b id="playerTitle">2025–26 Player impact rankings</b></div><button class="outline-btn" id="showAllPlayers">EXPLORE ALL PLAYERS <span>→</span></button></div>
+        <div class="table-wrap"><table><thead><tr><th>RK</th><th>PLAYER</th><th>TEAM</th><th>POS</th><th class="sortable" data-key="impact">IQ IMPACT ↕</th><th class="sortable" data-key="points">PPG ↕</th><th class="sortable" data-key="rebounds">RPG ↕</th><th class="sortable" data-key="assists">APG ↕</th><th>FORM</th></tr></thead><tbody id="playerRows"></tbody></table></div>
+        <div class="panel-footer"><span id="playerCount">—</span><button id="loadMorePlayers">LOAD MORE →</button></div>
+      </section>
+      <section class="data-note"><span class="live-dot"></span><div><b>League roster snapshot</b><p data-live-status>Loading the full player index…</p></div><button class="dark-btn js-refresh">REFRESH NOW ↻</button></section>
+    </main>
+  </div>
+  <script src="roster-data.js"></script>
+  <script src="stats-data.js"></script>
+  <script src="app.js?v=6"></script>
+</body>
+</html>

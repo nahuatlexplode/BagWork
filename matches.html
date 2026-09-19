@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>BagWork — Matches</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="index.html"><span class="brand-mark">B</span><span>BAG<br><b>WORK</b></span></a>
+      <nav>
+        <p class="nav-label">INTELLIGENCE</p>
+        <a class="nav-link" href="index.html"><span>◈</span>Overview</a>
+        <a class="nav-link" href="players.html"><span>⌁</span>Player Index</a>
+        <a class="nav-link" href="teams.html"><span>◒</span>Team Outlook</a>
+        <a class="nav-link" href="market.html"><span>↗</span>Market Moves</a>
+        <a class="nav-link active" href="matches.html"><span>▣</span>Matches</a>
+        <a class="nav-link" href="calendar.html"><span>◫</span>Calendar</a>
+        <a class="nav-link" href="media.html"><span>◉</span>Media</a>
+      </nav>
+    </aside>
+    <main>
+      <header>
+        <div><p class="eyebrow">SCORES & SCHEDULE</p><h1>Every game,<br><em>in full.</em></h1></div>
+        <div class="header-actions"><button class="icon-btn" id="refreshMatches">↻</button><a class="outline-btn" href="index.html">⌂ HOME</a></div>
+      </header>
+      <section class="league-toolbar"><div><p class="eyebrow">LEAGUE-WIDE MATCH OVERVIEW</p><b id="matchStatus">Loading every team’s next game…</b></div><button class="dark-btn" id="clearTeam">SHOW ALL TEAMS</button></section>
+      <section class="team-picker"><div><p class="eyebrow">EASTERN CONFERENCE</p><div id="eastTeams" class="team-column"></div></div><div><p class="eyebrow">WESTERN CONFERENCE</p><div id="westTeams" class="team-column"></div></div></section>
+      <section id="following" class="following-section" hidden><p class="eyebrow">FOLLOWING</p><div id="followingTeams" class="following-list"></div></section>
+      <section class="match-grid">
+        <section><div class="section-heading"><div><p class="eyebrow" id="matchScope">ALL TEAMS</p><h2>Upcoming games.</h2></div></div><div id="upcomingMatches" class="match-list"></div></section>
+        <aside id="teamGameAnalysis" class="game-analysis"><p class="eyebrow">LEAGUE VIEW</p><h2>Choose a team.</h2><p>Choose a short team code to focus the schedule, results, and team-specific match analysis.</p></aside>
+      </section>
+      <section class="results-section"><div class="section-heading"><div><p class="eyebrow">RECENT RESULTS</p><h2>Latest finals.</h2></div></div><div id="recentResults" class="match-list"></div></section>
+      <section id="gameDetail" class="boxscore-panel" hidden></section>
+    </main>
+  </div>
+  <script src="matches.js"></script>
+</body>
+</html>
