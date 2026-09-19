@@ -269,7 +269,11 @@ def get_season_stats(season):
                 continue
             rows.setdefault(player_id, [0, None, None, None, None, None, None, None])
             value = leader.get("value")
-            rows[player_id][index] = round(float(value), 2) if value is not None else None
+            if value is not None:
+                numeric_value = float(value)
+                if category == "3PointPct" and abs(numeric_value) <= 1:
+                    numeric_value *= 100
+                rows[player_id][index] = round(numeric_value, 2)
 
     totals = {}
     for leader in categories.get("points", []):

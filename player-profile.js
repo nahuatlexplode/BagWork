@@ -27,8 +27,12 @@
     });
   }
 
+  function percentageValue(value){
+    return Number.isFinite(value)&&Math.abs(value)<=1?value*100:value;
+  }
+
   function abilityPoints(line){
-    const values=line?.length?[Math.min(10,(line[1]||0)/3.3),Math.min(10,line[3]||0),Math.min(10,(line[7]||0)/5),Math.min(10,line[2]||0),Math.min(10,(line[4]||0)*5),Math.min(10,(line[5]||0)*3)]:[0,0,0,0,0,0];
+    const values=line?.length?[Math.min(10,(line[1]||0)/3.3),Math.min(10,line[3]||0),Math.min(10,(percentageValue(line[7])||0)/5),Math.min(10,line[2]||0),Math.min(10,(line[4]||0)*5),Math.min(10,(line[5]||0)*3)]:[0,0,0,0,0,0];
     return values.map((value,index)=>{
       const angle=-Math.PI/2+index*Math.PI/3,radius=66*(value/10);
       return `${100+Math.cos(angle)*radius},${100+Math.sin(angle)*radius}`;
@@ -38,13 +42,14 @@
   function applyStatLine(key){
     const line=stats[key]?.[playerId];
     const values=line?{
-      PPG:line[1],RPG:line[2],APG:line[3],SPG:line[4],BPG:line[5],'FG%':line[6],'3P%':line[7],
+      PPG:line[1],RPG:line[2],APG:line[3],SPG:line[4],BPG:line[5],'FG%':percentageValue(line[6]),'3P%':percentageValue(line[7]),
       'IQ IMPACT':line[1]+line[2]*1.25+line[3]*1.5+line[4]*2+line[5]*2
     }:{};
     document.querySelectorAll('.player-stats article').forEach(card=>{
       const label=card.querySelector('span')?.textContent;
       const value=values[label];
-      card.querySelector('b').textContent=Number.isFinite(value)?Number(value).toFixed(1):'—';
+      const suffix=label==='FG%'||label==='3P%'?'%':'';
+      card.querySelector('b').textContent=Number.isFinite(value)?`${Number(value).toFixed(1)}${suffix}`:'—';
     });
     const eyebrow=document.querySelector('.stat-title .eyebrow');
     if(eyebrow)eyebrow.textContent=seasonLabel(key);
