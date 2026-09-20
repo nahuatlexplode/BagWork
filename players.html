@@ -6,6 +6,7 @@
   <script src="analytics.js"></script>
   <title>Courtside IQ — Player Index</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="enhancements.css?v=2">
 </head>
 <body>
   <div class="app-shell">
@@ -32,7 +33,7 @@
       </section>
       <section class="rankings-panel">
         <div class="rank-toolbar"><div><p class="eyebrow">LEAGUE BOARD</p><b id="playerTitle">2025–26 Player impact rankings</b></div><button class="outline-btn" id="showAllPlayers">EXPLORE ALL PLAYERS <span>→</span></button></div>
-        <div class="table-wrap"><table><thead><tr><th>RK</th><th>PLAYER</th><th>TEAM</th><th>POS</th><th class="sortable" data-key="impact">IQ IMPACT ↕</th><th class="sortable" data-key="points">PPG ↕</th><th class="sortable" data-key="rebounds">RPG ↕</th><th class="sortable" data-key="assists">APG ↕</th><th>FORM</th></tr></thead><tbody id="playerRows"></tbody></table></div>
+        <div class="table-wrap"><table><thead><tr><th>RK</th><th>PLAYER</th><th>CURRENT TEAM</th><th>PAST TEAMS</th><th>POS</th><th class="sortable" data-key="impact">IQ IMPACT ↕</th><th class="sortable" data-key="points">PPG ↕</th><th class="sortable" data-key="rebounds">RPG ↕</th><th class="sortable" data-key="assists">APG ↕</th><th>FORM</th></tr></thead><tbody id="playerRows"></tbody></table></div>
         <div class="panel-footer"><span id="playerCount">—</span><button id="loadMorePlayers">LOAD MORE →</button></div>
       </section>
       <section class="data-note"><span class="live-dot"></span><div><b>League roster snapshot</b><p data-live-status>Loading the full player index…</p></div><button class="dark-btn js-refresh">REFRESH NOW ↻</button></section>
@@ -40,6 +41,7 @@
   </div>
   <script src="roster-data.js"></script>
   <script src="stats-data.js"></script>
-  <script src="app.js?v=7"></script>
+  <script src="player-history-data.js?v=2"></script>
+  <script src="app.js?v=9"></script>
 </body>
 </html>

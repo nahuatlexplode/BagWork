@@ -31,12 +31,17 @@
     return Number.isFinite(value)&&Math.abs(value)<=1?value*100:value;
   }
 
+  function abilityValues(line){
+    return line?.length?[Math.min(10,(line[1]||0)/3.3),Math.min(10,line[3]||0),Math.min(10,(percentageValue(line[7])||0)/5),Math.min(10,line[2]||0),Math.min(10,(line[4]||0)*5),Math.min(10,(line[5]||0)*3)]:[0,0,0,0,0,0];
+  }
+
+  function abilityPoint(index,value){
+    const angle=-Math.PI/2+index*Math.PI/3,radius=72*(value/10);
+    return [120+Math.cos(angle)*radius,110+Math.sin(angle)*radius];
+  }
+
   function abilityPoints(line){
-    const values=line?.length?[Math.min(10,(line[1]||0)/3.3),Math.min(10,line[3]||0),Math.min(10,(percentageValue(line[7])||0)/5),Math.min(10,line[2]||0),Math.min(10,(line[4]||0)*5),Math.min(10,(line[5]||0)*3)]:[0,0,0,0,0,0];
-    return values.map((value,index)=>{
-      const angle=-Math.PI/2+index*Math.PI/3,radius=66*(value/10);
-      return `${100+Math.cos(angle)*radius},${100+Math.sin(angle)*radius}`;
-    }).join(' ');
+    return abilityValues(line).map((value,index)=>abilityPoint(index,value).join(',')).join(' ');
   }
 
   function applyStatLine(key){
@@ -60,6 +65,20 @@
     document.querySelectorAll('.state-pill,.form-panel h2').forEach(item=>item.textContent=item.classList.contains('state-pill')?`● ${state}`:state);
     const dataShape=document.querySelector('.player-ability svg polygon:last-of-type');
     if(dataShape)dataShape.setAttribute('points',abilityPoints(line));
+    const skillValues=abilityValues(line);
+    document.querySelectorAll('[data-ability-value]').forEach(label=>{const index=Number(label.dataset.abilityValue);label.textContent=skillValues[index].toFixed(1)});
+    document.querySelectorAll('[data-ability-dot]').forEach(dot=>{const index=Number(dot.dataset.abilityDot),[cx,cy]=abilityPoint(index,skillValues[index]);dot.setAttribute('cx',cx);dot.setAttribute('cy',cy)});
+  }
+
+  function renderTeamHistory(){
+    const history=(window.NBA_PLAYER_HISTORY||{})[playerId]||[];
+    const previous=history.filter(team=>team.abbr!==fallbackTeam);
+    const hero=document.querySelector('.player-hero');
+    if(!hero)return;
+    const section=document.createElement('section');
+    section.className='team-history';
+    section.innerHTML=`<div class="team-history-head"><div><p class="eyebrow">CAREER TEAM HISTORY</p><h2>Teams played for.</h2></div><small>${previous.length} previous franchise${previous.length===1?'':'s'} · ESPN regular-season records</small></div><div class="team-history-track"><article class="team-history-card current"><img src="https://a.espncdn.com/i/teamlogos/nba/500/${fallbackTeam.toLowerCase()}.png" alt=""><div><span>CURRENT TEAM</span><b>${fallbackTeam}</b><small>2026–27 roster</small></div></article>${previous.map(team=>`<article class="team-history-card"><img src="https://a.espncdn.com/i/teamlogos/nba/500/${String(team.abbr).toLowerCase()}.png" alt="${team.team} logo"><div><span>PAST TEAM</span><b>${team.team}</b><small>${team.seasons.join(' · ')}</small></div></article>`).join('')||'<p class="history-empty">No previous NBA team is listed in the available regular-season record.</p>'}</div>`;
+    hero.insertAdjacentElement('afterend',section);
   }
 
   function setupSeasonMenu(){
@@ -152,6 +171,7 @@
   if(bio)bio.textContent='Season and career production are loaded from BagWork’s verified regular-season data snapshot.';
   setMeta('TEAM',fallbackTeam);
   setupPhoto();
+  renderTeamHistory();
   setupSeasonMenu();
   loadBio();
 })();
